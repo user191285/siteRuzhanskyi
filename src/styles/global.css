@@ -1,0 +1,181 @@
+:root {
+  /* 60% Base — Light & Interface Spectrum */
+  --color-bg: #F7F7F7;
+  --color-surface: #FFFFFF;
+  --color-input: #EDEDED;
+  --color-border: #D0D0D0;
+
+  /* 30% Structural Frame — Dark & Graphite Spectrum */
+  --color-text: #242424;
+  --color-text-hover: #3B3B3B;
+  --color-text-muted: #5E5E5E;
+  --color-footer-bg: #1A1A1A;
+
+  /* 10% Accents — Red Spectrum */
+  --color-accent: #EA5949;
+  --color-accent-dark: #C9423B;
+  --color-accent-press: #A62B25;
+  --color-accent-badge: #FF725C;
+
+  /* System Status Micro-accents */
+  --color-success: #1DCF8E;
+  --color-warning: #F5CA1B;
+  --color-muted-label: #787878;
+
+  /* Typography */
+  --font-family: 'Roboto', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  background: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Contact form (React island responsive)
+───────────────────────────────────────── */
+.contact-section {
+  background-color: #FFFFFF;
+  padding: 80px 0;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.contact-heading {
+  font-weight: 500;
+  font-size: 28px;
+  color: #242424;
+  margin-bottom: 48px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.3;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 0;
+  }
+  .contact-container {
+    padding: 0 20px;
+  }
+  .contact-heading {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 48px 0;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Mobile menu animations
+───────────────────────────────────────── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ─────────────────────────────────────────
+   View Transitions (page navigation fade)
+───────────────────────────────────────── */
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+::view-transition-old(root) {
+  animation: 160ms ease vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 220ms ease vt-fade-in;
+}
+
+/* ─────────────────────────────────────────
+   Global mobile section spacing
+───────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Ensure no horizontal overflow on any section */
+  section {
+    overflow-x: hidden;
+  }
+}

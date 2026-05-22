@@ -1,0 +1,129 @@
+---
+export interface Props {
+  lang?: 'uk' | 'en';
+  phone?: string;
+  email?: string;
+}
+
+const {
+  lang = 'uk',
+  phone = '+38 (0XX) XXX-XX-XX',
+  email = 'info@ruzhanskyi.com',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+
+const labels = {
+  uk: {
+    copyright: `© ${year} ФОП РУЖАНСЬКИЙ. Всі права захищені.`,
+    license: 'Ліцензія ДСНС України №__________',
+    privacy: 'Політика конфіденційності',
+  },
+  en: {
+    copyright: `© ${year} ФОП RUZHANSKYI. All rights reserved.`,
+    license: 'SSNS Ukraine License No. __________',
+    privacy: 'Privacy Policy',
+  },
+}[lang];
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="col col-logo">
+      <span class="footer-logo">ФОП РУЖАНСЬКИЙ</span>
+    </div>
+
+    <div class="col col-legal">
+      <p class="copyright">{labels.copyright}</p>
+      <p class="license">{labels.license}</p>
+    </div>
+
+    <div class="col col-contacts">
+      <a href={`tel:${phone.replace(/[^+\d]/g, '')}`} class="footer-link">{phone}</a>
+      <a href={`mailto:${email}`} class="footer-link">{email}</a>
+      <a href={lang === 'uk' ? '/privacy' : '/en/privacy'} class="footer-link footer-link--privacy">
+        {labels.privacy}
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-footer-bg);
+    padding: 52px 0;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-weight: 900;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+
+  .col-legal {
+    text-align: center;
+  }
+
+  .col-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .copyright {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .license {
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--color-muted-label);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .footer-link {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--color-muted-label);
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover {
+    color: #FFFFFF;
+  }
+
+  .footer-link--privacy {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+    }
+    .col-contacts {
+      align-items: center;
+    }
+    .col-legal {
+      text-align: center;
+    }
+  }
+</style>

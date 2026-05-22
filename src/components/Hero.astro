@@ -1,0 +1,312 @@
+---
+export interface Props {
+  lang?: 'uk' | 'en';
+}
+
+const { lang = 'uk' } = Astro.props;
+
+const content = {
+  uk: {
+    h1: 'Проектування та монтаж систем пожежної безпеки під ключ',
+    subtext: 'Комплексні інженерні рішення для захисту вашого бізнесу з офіційною ліцензією ДСНС.',
+    cta1: 'Розрахувати вартість',
+    cta2: 'Консультація інженера',
+    statusLabel: 'Система активна',
+    visualLabel: 'Ключовий візуал',
+    statYearsNum: '10+',
+    statYearsLabel: 'років досвіду у пожежній безпеці',
+    statProjectsNum: '100+',
+    statProjectsLabel: 'реалізованих проектів',
+  },
+  en: {
+    h1: 'Turnkey Design and Installation of Fire Safety Systems',
+    subtext: 'Comprehensive engineering solutions to protect your business, fully licensed by the SSNS.',
+    cta1: 'Calculate Cost',
+    cta2: 'Engineer Consultation',
+    statusLabel: 'System active',
+    visualLabel: 'Key Visual',
+    statYearsNum: '10+',
+    statYearsLabel: 'years of fire safety experience',
+    statProjectsNum: '100+',
+    statProjectsLabel: 'completed projects',
+  },
+}[lang];
+---
+
+<section id="hero" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <h1>{content.h1}</h1>
+      <p class="hero-subtext">{content.subtext}</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">{content.cta1}</a>
+        <a href="#contact" class="btn-secondary">{content.cta2}</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">{content.statYearsNum}</span>
+          <span class="stat-label">{content.statYearsLabel}</span>
+        </div>
+        <span class="stat-divider" aria-hidden="true"></span>
+        <div class="stat-item">
+          <span class="stat-number">{content.statProjectsNum}</span>
+          <span class="stat-label">{content.statProjectsLabel}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-placeholder">
+        <img
+          src="/images/hero-visual.jpg"
+          alt="Системи пожежної безпеки"
+          class="hero-photo"
+          onerror="this.style.display='none';this.parentElement.querySelector('.visual-label').style.display='block'"
+          loading="eager"
+        />
+        <span class="visual-label" style="display:none">{content.visualLabel}</span>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">{content.statusLabel}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-color: var(--color-bg);
+    padding: 100px 0;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .hero-text {
+    flex: 0 0 58%;
+    max-width: 58%;
+  }
+
+  h1 {
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtext {
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Stats ── */
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-input);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .stat-number {
+    font-weight: 900;
+    font-size: 38px;
+    color: var(--color-text);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .stat-label {
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    max-width: 130px;
+  }
+
+  .stat-divider {
+    display: block;
+    width: 1px;
+    height: 44px;
+    background-color: var(--color-input);
+    flex-shrink: 0;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-text-hover);
+  }
+
+  .btn-primary:active {
+    background-color: var(--color-accent-press);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-text-hover);
+    color: var(--color-text-hover);
+  }
+
+  /* ── Visual ── */
+  .hero-visual {
+    flex: 0 0 38%;
+    max-width: 38%;
+  }
+
+  .visual-placeholder {
+    position: relative;
+    background-color: var(--color-input);
+    border-radius: 4px;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .visual-label {
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--color-muted-label);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .status-badge {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 6px 12px;
+    border-radius: 2px;
+    border: 1px solid var(--color-input);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-success);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .status-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .hero {
+      padding: 70px 0;
+    }
+    .hero-inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .hero-text,
+    .hero-visual {
+      flex: none;
+      max-width: 100%;
+      width: 100%;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    .stat-number {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 48px 0;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .hero-ctas {
+      flex-direction: column;
+    }
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-stats {
+      gap: 24px;
+      margin-top: 32px;
+      padding-top: 24px;
+    }
+    .stat-number {
+      font-size: 28px;
+    }
+    .stat-label {
+      font-size: 11px;
+    }
+  }
+</style>

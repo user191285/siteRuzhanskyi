@@ -1,0 +1,265 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Footer from '../../../components/Footer.astro';
+
+type Solution = {
+  metaTitle: string;
+  h1: string;
+  subtitle: string;
+  intro: string;
+  includedTitle: string;
+  included: string[];
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const solutions: Record<string, Solution> = {
+    design: {
+      metaTitle: 'Fire Safety Systems Design — ФОП РУЖАНСЬКИЙ',
+      h1: 'Fire Safety Systems Design',
+      subtitle: 'We develop a complete set of project documentation for fire protection systems in accordance with SSNS, DBN, and NPAOP requirements.',
+      intro: 'From initial facility inspection to regulatory approval — we handle all technical and documentation matters. Every project is personally signed and complies with current standards.',
+      includedTitle: 'What is included',
+      included: [
+        'Facility inspection and fire risk analysis',
+        'Development of technical specifications',
+        'Fire alarm system (FAS) design',
+        'Automatic fire suppression system (AFSS) design',
+        'Smoke extraction and air pressure boost system design',
+        'Cost estimate documentation',
+        'Project coordination with SSNS authorities',
+        'Construction supervision during installation works',
+      ],
+    },
+    installation: {
+      metaTitle: 'Fire Safety Systems Installation — ФОП РУЖАНСЬКИЙ',
+      h1: 'Installation & Engineering of Fire Protection Systems',
+      subtitle: 'We carry out a full cycle of installation and commissioning works for facilities of any complexity and category.',
+      intro: 'From warehouses to large shopping and entertainment centres — we have experience working with facilities of any purpose. All installation is carried out by our own certified specialists without involving unqualified subcontractors.',
+      includedTitle: 'What is included',
+      included: [
+        'Installation of fire alarm systems (addressable and threshold-based)',
+        'Installation of automatic water fire suppression systems (sprinkler and deluge)',
+        'Installation of gas and powder fire suppression systems',
+        'Installation of smoke extraction and air pressure boost systems',
+        'Installation of notification and evacuation management systems',
+        'Commissioning and programming works',
+        'Handover to supervisory authorities and obtaining required documents',
+        'Training of responsible personnel',
+      ],
+    },
+    maintenance: {
+      metaTitle: 'Fire Safety Systems Maintenance — ФОП РУЖАНСЬКИЙ',
+      h1: 'Technical Maintenance of Fire Safety Systems',
+      subtitle: 'We ensure the continuous technical operability of installed fire protection systems under a single service contract.',
+      intro: 'A properly functioning fire safety system is not just a legal requirement — it is real protection for people and property. We provide regular servicing with documentation required for SSNS inspections.',
+      includedTitle: 'What is included',
+      included: [
+        'Quarterly scheduled technical maintenance',
+        'Inspection and testing of all sensors and components',
+        'Replacement of worn or damaged elements',
+        'Maintenance of the technical service log',
+        'Unscheduled call-outs for faults and emergencies',
+        'Annual comprehensive testing of the entire system',
+        'Preparation of inspection reports for supervisory authorities',
+      ],
+    },
+    'fire-protection': {
+      metaTitle: 'Fire Protection Treatment — ФОП РУЖАНСЬКИЙ',
+      h1: 'Fire Protection Treatment of Structures and Materials',
+      subtitle: 'We increase the fire resistance of load-bearing and enclosing structures using certified materials with full documentation.',
+      intro: 'We use only certified fire-retardant materials with confirmed fire resistance ratings. Upon completion, we provide acts and protocols for SSNS inspections.',
+      includedTitle: 'What is included',
+      included: [
+        'Fire protection treatment of metal load-bearing structures (paints, plaster)',
+        'Impregnation of timber and wooden structures with fire-biological protection compounds',
+        'Fire protection of cable routings and engineering utilities',
+        'Preparation of fire protection treatment acts and protocols',
+        'Checking residual coating condition (under service contract)',
+        'Retreatment within the recommended period',
+        'Material compliance with SSNS and DBN requirements',
+      ],
+    },
+    ajax: {
+      metaTitle: 'Ajax Systems Installation — ФОП РУЖАНСЬКИЙ',
+      h1: 'Official Ajax Security & Fire System Installation',
+      subtitle: 'Certified installation of Ajax Systems wireless and hybrid solutions for facilities of any type and purpose.',
+      intro: 'Ajax Systems is a leading security and fire protection manufacturer with wireless technology. As a certified brand partner, we install systems without cutting into walls, with minimal installation time and full manufacturer warranty support.',
+      includedTitle: 'What is included',
+      included: [
+        'Facility survey and Ajax system design for specific conditions',
+        'Installation of Ajax wireless smoke, heat, and CO detectors',
+        'Installation of manual call points and siren sounders',
+        'Configuration of hubs and monitoring in Ajax PRO Desktop',
+        'Integration of fire and security circuits into a unified system',
+        'Connection to a central monitoring station (optional)',
+        "Push notification setup on responsible persons' smartphones",
+        'Manufacturer warranty service from Ajax Systems',
+        'Staff training on the app and system operation',
+      ],
+    },
+  };
+
+  return Object.entries(solutions).map(([slug, s]) => ({
+    params: { slug },
+    props: { s },
+  }));
+};
+
+interface Props { s: Solution }
+const { s } = Astro.props;
+---
+
+<BaseLayout title={s.metaTitle} description={s.subtitle} lang="en">
+  <Header lang="en" />
+  <main>
+    <PageHero
+      title={s.h1}
+      subtitle={s.subtitle}
+      backLabel="All Solutions"
+      backHref="/en/#solutions"
+    />
+
+    <section class="solution-content">
+      <div class="container">
+        <div class="content-grid">
+          <div class="main-col">
+            <p class="intro">{s.intro}</p>
+            {Astro.params.slug === 'ajax' && (
+              <div class="poster-wrap">
+                <img src="/images/ajax-poster.png" alt="Ajax Systems — ФОП РУЖАНСЬКИЙ" class="poster-img" loading="lazy" />
+              </div>
+            )}
+            <h2 class="included-heading">{s.includedTitle}</h2>
+            <ul class="included-list">
+              {s.included.map((item) => (
+                <li class="included-item">
+                  <span class="dash">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside class="side-col">
+            <div class="cta-card">
+              <p class="cta-card-text">Ready to start work on your facility?</p>
+              <a href="/en/#contact" class="cta-btn">Send a Request</a>
+              <a href="https://wa.me/380XXXXXXXXX?text=Hello%21%20I%20am%20interested%20in%20a%20fire%20safety%20consultation." target="_blank" rel="noopener noreferrer" class="wa-btn">
+                Message on WhatsApp
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .solution-content {
+    background-color: var(--color-surface);
+    padding: 72px 0 96px;
+  }
+
+  .poster-wrap {
+    margin-bottom: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--color-input);
+  }
+
+  .poster-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .intro {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  .included-heading {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+
+  .included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .included-item {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-input);
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .included-item:last-child { border-bottom: none; }
+
+  .dash { color: var(--color-accent); font-weight: 500; flex-shrink: 0; }
+
+  .cta-card {
+    position: sticky;
+    top: 84px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-input);
+    border-radius: 2px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-card-text { font-weight: 500; font-size: 15px; color: var(--color-text); line-height: 1.5; margin-bottom: 4px; }
+
+  .cta-btn {
+    display: flex; align-items: center; justify-content: center;
+    padding: 13px 20px; background-color: var(--color-accent); color: #FFFFFF;
+    font-weight: 500; font-size: 14px; border-radius: 2px;
+    transition: background-color 0.2s; text-align: center;
+  }
+  .cta-btn:hover { background-color: var(--color-text-hover); }
+
+  .wa-btn {
+    display: flex; align-items: center; justify-content: center;
+    padding: 13px 20px; background-color: transparent; color: var(--color-text);
+    font-weight: 500; font-size: 14px; border: 1px solid var(--color-border);
+    border-radius: 2px; transition: border-color 0.2s, color 0.2s; text-align: center;
+  }
+  .wa-btn:hover { border-color: #25D366; color: #25D366; }
+
+  @media (max-width: 900px) {
+    .content-grid { grid-template-columns: 1fr; gap: 48px; }
+    .cta-card { position: static; }
+  }
+  @media (max-width: 480px) {
+    .solution-content { padding: 48px 0 64px; }
+    .intro { font-size: 15px; }
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.tsx';
+import MobileMenu from './MobileMenu.tsx';
+
+export interface Props {
+  lang?: 'uk' | 'en';
+  phone?: string;
+}
+
+const { lang = 'uk', phone = '+38 (0XX) XXX-XX-XX' } = Astro.props;
+
+const navLinks = lang === 'uk'
+  ? [
+      { href: '/#solutions', label: 'Рішення' },
+      { href: '/#about', label: 'Про компанію' },
+      { href: '/portfolio', label: "Розроблені об'єкти" },
+      { href: '/#contact', label: "Зв'язок" },
+    ]
+  : [
+      { href: '/en/#solutions', label: 'Solutions' },
+      { href: '/en/#about', label: 'About' },
+      { href: '/en/portfolio', label: 'Projects' },
+      { href: '/en/#contact', label: 'Contact' },
+    ];
+
+const callbackLabel = lang === 'uk' ? 'Зворотний дзвінок' : 'Request a call';
+const homeHref = lang === 'uk' ? '/' : '/en/';
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href={homeHref} class="logo">ФОП РУЖАНСЬКИЙ</a>
+
+    <!-- Desktop nav -->
+    <nav class="nav" aria-label="Main navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+
+    <!-- Desktop actions -->
+    <div class="header-actions desktop-actions">
+      <span class="lang-wrap">
+        <LanguageSwitcher client:load currentLang={lang} />
+      </span>
+      <span class="divider" aria-hidden="true"></span>
+      <a href={`tel:${phone.replace(/[^+\d]/g, '')}`} class="phone">{phone}</a>
+      <a href="#contact" class="callback">{callbackLabel}</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="mobile-trigger">
+      <MobileMenu client:load lang={lang} phone={phone} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-input);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 40px;
+  }
+
+  .logo {
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-text);
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-hover);
+  }
+
+  .desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .divider {
+    display: block;
+    width: 1px;
+    height: 20px;
+    background-color: var(--color-input);
+  }
+
+  .phone {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-text);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+
+  .phone:hover {
+    color: var(--color-accent);
+  }
+
+  .callback {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-dark);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .callback:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .mobile-trigger {
+    display: none;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 1024px) {
+    .header-inner {
+      gap: 24px;
+    }
+    .nav {
+      gap: 20px;
+    }
+    .phone {
+      display: none;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+    .desktop-actions {
+      display: none;
+    }
+    .mobile-trigger {
+      display: flex;
+      align-items: center;
+    }
+    .header-inner {
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
+</style>

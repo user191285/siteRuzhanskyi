@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Брендбук — ФОП РУЖАНСЬКИЙ</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 15mm;
+            background-color: #ffffff;
+            @bottom-right {
+                content: "Брендбук | Сторінка " counter(page);
+                font-family: 'Arial', sans-serif;
+                font-size: 8pt;
+                color: #787878;
+            }
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            color: #242424;
+            line-height: 1.3;
+            margin: 0;
+            padding: 0;
+            font-size: 9.5pt;
+        }
+        .header-bar {
+            margin: -18mm -15mm 20px -15mm;
+            padding: 25px 15mm;
+            background-color: #242424;
+            color: #ffffff;
+            border-bottom: 5px solid #C9423B;
+        }
+        .header-bar h1 {
+            margin: 0;
+            font-size: 22pt;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .header-bar p {
+            margin: 5px 0 0 0;
+            font-size: 10pt;
+            color: #ADADAD;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 13pt;
+            color: #C9423B;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            border-left: 4px solid #EA5949;
+            padding-left: 8px;
+            page-break-after: avoid;
+        }
+        h3 {
+            font-size: 11pt;
+            color: #242424;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+            page-break-after: avoid;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #333333;
+            text-align: justify;
+        }
+        .philosophy-box {
+            background-color: #F7F7F7;
+            border: 1px solid #E0E0E0;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .color-grid {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .color-row {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            margin-bottom: 8px;
+        }
+        .color-card {
+            display: table-cell;
+            width: 25%;
+            padding: 5px;
+            vertical-align: top;
+        }
+        .color-swatch {
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid #E0E0E0;
+            margin-bottom: 4px;
+        }
+        .color-meta {
+            font-size: 7.5pt;
+            line-height: 1.3;
+        }
+        .color-name {
+            font-weight: bold;
+            font-size: 8.5pt;
+            margin-bottom: 2px;
+        }
+        .proportion-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .proportion-table td {
+            height: 35px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 9.5pt;
+        }
+        .table-guide {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .table-guide th, .table-guide td {
+            border: 1px solid #E0E0E0;
+            padding: 8px;
+            text-align: left;
+            font-size: 8.5pt;
+        }
+        .table-guide th {
+            background-color: #242424;
+            color: white;
+        }
+        .table-guide tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        .rule-list {
+            margin: 6px 0;
+            padding-left: 15px;
+        }
+        .rule-list li {
+            margin-bottom: 4px;
+            font-size: 9pt;
+        }
+        .logo-demo-box {
+            background-color: #F7F7F7;
+            border: 1px solid #EDEDED;
+            padding: 15px;
+            text-align: center;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .logo-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: 900;
+            letter-spacing: 1px;
+            font-size: 16pt;
+            color: #242424;
+            margin: 5px 0;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <h1>Брендбук</h1>
+        <p>Ідентичність та візуальні стандарти: ФОП РУЖАНСЬКИЙ</p>
+    </div>
+
+    <div class="philosophy-box">
+        <p><strong>Концептуальний маніфест:</strong> Ми поєднуємо безкомпромісну протидію пожежним ризикам із абсолютним комфортом для бізнесу. Наш візуальний стиль базується на чіткій інженерній геометрії, цифровій преміальності та розширеній палітрі відтінків. Для прискорення запуску (MVP) графічні знаки замінено на чистий текстовий логотип під іменем <strong>ФОП РУЖАНСЬКИЙ</strong>, що транслює персональну відповідальність, відкритість та надійність.</p>
+    </div>
+
+    <h2>РОЗДІЛ 1. Розширена колірна палітра та правило 60/30/10</h2>
+    <p>Для запобігання хаосу інтерфейси та рекламні банери суворо підпорядковуються правилу розподілу простору екрану, використовуючи всі інтегровані функціональні відтінки:</p>
+    
+    <table class="proportion-table">
+        <tr>
+            <td style="width: 60%; background-color: #F7F7F7; color: #242424; border: 1px solid #E0E0E0;">60% Світлий простір (Комфорт & Фони)</td>
+            <td style="width: 30%; background-color: #242424; color: #FFFFFF;">30% Графітова структура</td>
+            <td style="width: 10%; background-color: #EA5949; color: #FFFFFF;">10% Червоні акценти</td>
+        </tr>
+    </table>
+
+    <h3>1.1. Червоний акцентний спектр (Red Spectrum — 10%)</h3>
+    <div class="color-row">
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #EA5949;"></div>
+            <div class="color-meta"><span class="color-name">Приглушений Червоний</span><br>HEX: #EA5949<br>Головні CTA кнопки та активні елементи.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #C9423B;"></div>
+            <div class="color-meta"><span class="color-name">Глибокий Теракотовий</span><br>HEX: #C9423B<br>Плашки важливих сповіщень та підкреслення.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #A62B25;"></div>
+            <div class="color-meta"><span class="color-name">Темний Бордо</span><br>HEX: #A62B25<br>Стан кнопок при натисканні (Active state).</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #FF725C;"></div>
+            <div class="color-meta"><span class="color-name">Світло-кораловий</span><br>HEX: #FF725C<br>Декоративне підсвічування, інфографіка.</div>
+        </div>
+    </div>
+
+    <h3>1.2. Темний та структурний спектр (Dark Spectrum — 30%)</h3>
+    <div class="color-row">
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #1A1A1A;"></div>
+            <div class="color-meta"><span class="color-name">Абсолютний Чорний</span><br>HEX: #1A1A1A<br>Преміальні підвали сайту (Footer).</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #242424;"></div>
+            <div class="color-meta"><span class="color-name">Глибокий Графіт</span><br>HEX: #242424<br>Основний колір тексту, меню та логотипу.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #3B3B3B;"></div>
+            <div class="color-meta"><span class="color-name">Графітовий Hover</span><br>HEX: #3B3B3B<br>Ефекти наведення для кнопок та посилань.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #5E5E5E;"></div>
+            <div class="color-meta"><span class="color-name">Стриманий Сірий</span><br>HEX: #5E5E5E<br>Вторинні тексти на темних плашках.</div>
+        </div>
+    </div>
+
+    <h3>1.3. Світлий та інтерфейсний спектр (Light Spectrum — 60%)</h3>
+    <div class="color-row">
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #D0D0D0;"></div>
+            <div class="color-meta"><span class="color-name">Чистий Білий</span><br>HEX: #FFFFFF<br>Фон робочих карток, біле повітря екранів.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #F7F7F7; border: 1px solid #D0D0D0;"></div>
+            <div class="color-meta"><span class="color-name">Світло-сірий фон</span><br>HEX: #F7F7F7<br>Основне тло веб-сторінок сайту.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #EDEDED; border: 1px solid #D0D0D0;"></div>
+            <div class="color-meta"><span class="color-name">Сірий напівтон</span><br>HEX: #EDEDED<br>Тонкі розділювачі карток, фони інпутів.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #D0D0D0; border: 1px solid #B0B0B0;"></div>
+            <div class="color-meta"><span class="color-name">Контурний Сірий</span><br>HEX: #D0D0D0<br>Лінії таблиць, неактивні стани кнопок.</div>
+        </div>
+    </div>
+
+    <h3>1.4. Сигнальні кольори статусів (System Status)</h3>
+    <div class="color-row">
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #1DCF8E;"></div>
+            <div class="color-meta"><span class="color-name">Статус: Безпечно</span><br>HEX: #1DCF8E<br>Система активна / працює штатно.</div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: #F5CA1B;"></div>
+            <div class="color-meta"><span class="color-name">Статус: Увага</span><br>HEX: #F5CA1B<br>Заявка в обробці / сервісне ТО.</div>
+        </div>
+        <div class="color-card" style="width: 50%; vertical-align: middle; padding-left: 10px;">
+            <p style="font-size: 8pt; font-style: italic; color: #555555; margin: 0;">* Сигнальні тони з'являються виключно як точкові статус-маркери (менше 2% площі інтерфейсу) і ніколи не застосовуються для фонів чи тексту.</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>РОЗДІЛ 2. Стандарти іменного логотипу «ФОП РУЖАНСЬКИЙ»</h2>
+    <p>Роль головного торгівельного знаку виконує чисте текстове написання (Logotype), виконане великими літерами (ALL CAPS) фірмовим шрифтом <strong>Roboto</strong>. Це підкреслює персональну відповідальність інженера та спрощує розробку сайту.</p>
+    
+    <div class="logo-demo-box">
+        <p style="font-size: 8pt; color: #787878; text-transform: uppercase; margin: 0 0 5px 0;">Основна версія (Roboto Black — максимальний контраст):</p>
+        <div class="logo-text" style="font-weight: 900;">ФОП РУЖАНСЬКИЙ</div>
+        
+        <p style="font-size: 8pt; color: #787878; text-transform: uppercase; margin: 15px 0 5px 0;">Додаткова полегшена версія (Roboto Medium — для малих форматів):</p>
+        <div class="logo-text" style="font-weight: 500; font-size: 14pt;">ФОП РУЖАНСЬКИЙ</div>
+    </div>
+
+    <h3>2.1. Колірні варіації логотипу для різних зон макету</h3>
+    <table class="table-guide">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Тип версії</th>
+                <th style="width: 25%;">Код кольору</th>
+                <th style="width: 45%;">Умови застосування на сайті</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Пряма (Основна)</strong></td>
+                <td>Глибокий Графіт (`#242424`)</td>
+                <td>Розміщується на Чистому білому (`#FFFFFF`) або Світло-сірому фоні (`#F7F7F7`) у шапці сайту (Header).</td>
+            </tr>
+            <tr>
+                <td><strong>Інверсна (Контрастна)</strong></td>
+                <td>Чистий Білий (`#FFFFFF`)</td>
+                <td>Застосовується у темних зонах, наприклад, у графітовому підвалі сайту (Footer).</td>
+            </tr>
+            <tr>
+                <td><strong>Акцентна (Маркетингова)</strong></td>
+                <td>Приглушений Червоний (`#EA5949`)</td>
+                <td>Для фірмових бланкових матеріалів, актів, договорів або аватарів.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>РОЗДІЛ 3. Типографіка та 3 важелі впливу на увагу</h2>
+    <p>Для оформлення всіх текстових матеріалів, інтерфейсів та блоків сайту використовується виключно сімейство шрифтів <strong>Roboto</strong>. Додаткові сторонні шрифти повністю заборонені.</p>
+    <p>Управління увагою клієнта будується на правилі: <strong>найбільш контрастний елемент на зображенні привертає увагу першим.</strong> Контраст текстового логотипу та офферів регулюється трьома інструментами:</p>
+    <ul class="rule-list">
+        <li><strong>1. Розмір (Size):</strong> Логотип «ФОП РУЖАНСЬКИЙ» у шапці сайту повинен бути чітким, але за розміром він завжди поступається головному офферу сторінки (Value). Клієнт спочатку бачить користь, а потім виконавця.</li>
+        <li><strong>2. Яскравість (Brightness):</strong> Логотип виконується у стриманому глибокому графіті (`#242424`) на світлому фоні, що забезпечує високу читабельність без створення зайвого візуального шуму.</li>
+        <li><strong>3. Товщина (Thickness):</strong> Використання накреслення <i>Roboto Black</i> або <i>Medium</i> для імені надає йому стійкості, стабільності та солідності.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2>РОЗДІЛ 4. Ієрархія компонентів повідомлення та макетування</h2>
+    <p>При проектуванні сторінок сайту або рекламних банерів, текстовий логотип посідає чітке 3-тє місце в загальній ієрархії компонентів (Ко-брендинг):</p>
+    
+    <ol class="rule-list">
+        <li><strong>1. Ключовий візуал (Key Visual) [~40% площі]:</strong> Фото чи рендер сучасних пристроїв та датчиків безпеки. Викликає емоцію контролю.</li>
+        <li><strong>2. Цінність / Головний Оффер (Value):</strong> Найвищий пріоритет. Великий жирний текст (наприклад: <i>"Монтаж пожежної сигналізації під ключ за 24 години"</i>), написаний за допомогою Roboto Black.</li>
+        <li><strong>3. Ко-брендинг (Co-branding) [Наш логотип]:</strong> Написання <strong>ФОП РУЖАНСЬКИЙ</strong>. Вказує на виконавця, візуально менший за цінність.</li>
+        <li><strong>4. Заклик до дії (Call to Action / CTA):</strong> Кнопка приглушено-червоного кольору (`#EA5949`), яка чітко вказує на наступний крок (наприклад, <i>"Викликати інженера"</i>).</li>
+        <li><strong>5. Аргумент довіри (Reason to Believe):</strong> Деталі пропозиції, державні ліцензії, сертифікати відповідності стандартам ДСНС.</li>
+        <li><strong>6. Додаткові компоненти (Other Components):</strong> Контакти, посилання на юридичні документи. Написання робиться невеликим (колір `#787878`), але з високою товщиною для читабельності.</li>
+    </ol>
+
+    <h2>РОЗДІЛ 5. Правила макетування та зонування простору</h2>
+    <h3>5.1. Охоронна зона та повітря ("Let it breathe")</h3>
+    <p>Текстовий логотип потребує простору. Категорично заборонено намагатися заповнить весь вільний простір навколо напису. Навколо логотипу «ФОП РУЖАНСЬКИЙ» обов'язково закладається <strong>охоронна зона</strong> — чистий простір, рівний висоті літери "Ф" з логотипу. Жодні сторонні тексти, графічні лінії чи іконки не можуть заходити в ці межі.</p>
+
+    <h3>5.2. Правила зонування інтерфейсу:</h3>
+    <ul class="rule-list">
+        <li>Сайт структурується на чіткі горизонтальні або вертикальні зони (Header, блоки послуг, Footer). Кількість зон є гнучкою.</li>
+        <li>Зонування виконується за допомогою меж кольору сірого напівтону (`#EDEDED`), контурного сірого (`#D0D0D0`) або колірних блоків (наприклад, перехід на світло-сірий фон `#F7F7F7`).</li>
+        <li><strong>Суворе табу:</strong> Заборонено використовувати діагональне зонування макетів.</li>
+        <li><strong>Суворе табу:</strong> Виділені функціональні зони на сайті в жодному разі не повинні залишатися порожніми чи нефункціональними.</li>
+    </ul>
+
+    <h2>РОЗДІЛ 6. Зведена матриця обмежень для розробників сайту</h2>
+    <table class="table-guide">
+        <thead>
+            <tr>
+                <th style="width: 50%; background-color: #1DCF8E;">ПРАВИЛЬНО (Do's)</th>
+                <th style="width: 50%; background-color: #C9423B;">ЗАБОРОНЕНО (Don'ts)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Писати логотип «ФОП РУЖАНСЬКИЙ» виключно великими літерами шрифтом Roboto Black/Medium.</td>
+                <td>Додавати до текстового логотипу сторонні графічні іконки вогню, щитів чи сирен.</td>
+            </tr>
+            <tr>
+                <td>Зберігати охоронну зону навколо імені, дозволяючи елементу "дихати" у шапці сайту.</td>
+                <td>Розміщувати текстовий логотип по діагоналі або нахиляти літери.</td>
+            </tr>
+            <tr>
+                <td>Використовувати інверсну білу версію логотипу на глибокому графітовому чи чорному тлі підвалу сайту.</td>
+                <td>Застосовувати слабкий сірий напівтон (#EDEDED) для написання імені, порушуючи норми контрастності UI.</td>
+            </tr>
+            <tr>
+                <td>Застосовувати розширені ховери (#3B3B3B та #A62B25) для підвищення інтерактивності елементів.</td>
+                <td>Перевантажувати рекламний блок дрібними елементами без вибудованої ієрархії 6 компонентів.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

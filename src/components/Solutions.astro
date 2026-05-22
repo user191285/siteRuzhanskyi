@@ -1,0 +1,249 @@
+---
+export interface Props {
+  lang?: 'uk' | 'en';
+}
+
+const { lang = 'uk' } = Astro.props;
+const prefix = lang === 'uk' ? '' : '/en';
+
+interface Card {
+  title: string;
+  description: string;
+  slug: string;
+  featured?: boolean;
+  badge?: string;
+}
+
+const content: { heading: string; detailsBtn: string; portfolioBtn: string; portfolioHref: string; cards: Card[] } = {
+  uk: {
+    heading: 'Комплексні інженерні рішення',
+    detailsBtn: 'Детальніше',
+    portfolioBtn: 'Всі реалізовані проекти →',
+    portfolioHref: '/portfolio',
+    cards: [
+      {
+        title: 'Проектування систем',
+        description: "Розробка проектної документації систем пожежної сигналізації, автоматичного пожежогасіння та димовидалення відповідно до норм ДСНС.",
+        slug: 'design',
+      },
+      {
+        title: 'Монтаж та інжиніринг',
+        description: "Комплексний монтаж інженерних систем пожежної безпеки на об'єктах будь-якої складності — від складів до торгово-розважальних центрів.",
+        slug: 'installation',
+      },
+      {
+        title: 'Технічне обслуговування',
+        description: 'Планове та позапланове технічне обслуговування встановлених систем пожежної безпеки з гарантією справності та відповідної документації.',
+        slug: 'maintenance',
+      },
+      {
+        title: 'Вогнезахисна обробка',
+        description: "Нанесення вогнезахисних покриттів на металоконструкції та дерев'яні поверхні для підвищення вогнестійкості об'єктів.",
+        slug: 'fire-protection',
+      },
+      {
+        title: 'Встановлення систем Ajax',
+        description: "Офіційне партнерське встановлення охоронно-пожежних систем Ajax Systems — бездротові та гібридні рішення для об'єктів будь-якої категорії. Сертифіковані монтажники, гарантійне обслуговування від виробника.",
+        slug: 'ajax',
+        featured: true,
+        badge: 'AJAX PARTNER',
+      },
+    ],
+  },
+  en: {
+    heading: 'Comprehensive Engineering Solutions',
+    detailsBtn: 'Learn More',
+    portfolioBtn: 'All completed projects →',
+    portfolioHref: '/en/portfolio',
+    cards: [
+      {
+        title: 'Systems Design',
+        description: 'Development of project documentation for fire alarm systems, automatic fire suppression, and smoke extraction in compliance with SSNS regulations.',
+        slug: 'design',
+      },
+      {
+        title: 'Installation & Engineering',
+        description: 'Full-cycle installation of fire safety engineering systems for facilities of any complexity — from warehouses to shopping and entertainment centers.',
+        slug: 'installation',
+      },
+      {
+        title: 'Technical Maintenance',
+        description: 'Scheduled and unscheduled maintenance of installed fire safety systems with guaranteed operability and proper documentation.',
+        slug: 'maintenance',
+      },
+      {
+        title: 'Fire Protection Treatment',
+        description: 'Application of fire-retardant coatings on metal structures and wooden surfaces to increase fire resistance of facilities.',
+        slug: 'fire-protection',
+      },
+      {
+        title: 'Ajax Systems Installation',
+        description: 'Official partner installation of Ajax Systems security and fire protection solutions — wireless and hybrid protection for any facility category. Certified installers, manufacturer warranty support.',
+        slug: 'ajax',
+        featured: true,
+        badge: 'AJAX PARTNER',
+      },
+    ],
+  },
+}[lang];
+---
+
+<section id="solutions" class="solutions">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">{content.heading}</h2>
+      <a href={content.portfolioHref} class="portfolio-link">{content.portfolioBtn}</a>
+    </div>
+    <div class="cards-grid">
+      {content.cards.map((card) => (
+        <div class:list={['card', { 'card--featured': card.featured }]}>
+          {card.badge && (
+            <span class="card-badge">{card.badge}</span>
+          )}
+          <h3 class="card-title">{card.title}</h3>
+          <p class="card-description">{card.description}</p>
+          <a href={`${prefix}/solutions/${card.slug}`} class="card-btn">{content.detailsBtn}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .solutions {
+    background-color: var(--color-surface);
+    padding: 80px 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .section-heading {
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .portfolio-link {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    transition: color 0.2s;
+    letter-spacing: 0.2px;
+  }
+
+  .portfolio-link:hover {
+    color: var(--color-accent);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--color-input);
+  }
+
+  .card {
+    background-color: var(--color-surface);
+    padding: 44px 40px;
+    border: 1px solid var(--color-input);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: box-shadow 0.25s;
+    position: relative;
+  }
+
+  .card:hover {
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    z-index: 1;
+  }
+
+  .card--featured {
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--color-accent);
+    padding-left: 37px;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    column-gap: 48px;
+    gap: 0;
+  }
+
+  .card--featured .card-badge { width: 100%; }
+  .card--featured .card-title { flex: 0 0 260px; margin-top: 8px; font-size: 20px; }
+  .card--featured .card-description { flex: 1; margin-top: 8px; min-width: 200px; }
+  .card--featured .card-btn { margin-top: 20px; width: 100%; align-self: auto; }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+
+  .card-title {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .card-description {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 13px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    align-self: flex-start;
+    transition: border-color 0.2s, color 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .card-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .card { padding: 32px 24px; }
+    .card--featured {
+      grid-column: auto;
+      border-left: 3px solid var(--color-accent);
+      padding-left: 21px;
+      flex-direction: column;
+    }
+    .card--featured .card-title { flex: none; }
+    .card--featured .card-btn { align-self: flex-start; width: auto; }
+    .section-heading { font-size: 24px; }
+    .section-header { margin-bottom: 32px; }
+  }
+</style>

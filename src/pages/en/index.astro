@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Solutions from '../../components/Solutions.astro';
+import About from '../../components/About.astro';
+import ContactForm from '../../components/ContactForm.tsx';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout
+  title="ФОП РУЖАНСЬКИЙ — Fire Safety Engineering"
+  description="Comprehensive engineering solutions for protecting your business, fully licensed by the SSNS. Fire safety design, installation, and maintenance."
+  lang="en"
+>
+  <Header lang="en" />
+  <main>
+    <Hero lang="en" />
+    <Solutions lang="en" />
+    <About lang="en" />
+    <ContactForm client:visible lang="en" whatsappNumber="380XXXXXXXXX" />
+  </main>
+  <Footer lang="en" />
+</BaseLayout>

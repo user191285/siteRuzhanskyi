@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Solutions from '../components/Solutions.astro';
+import About from '../components/About.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="ФОП РУЖАНСЬКИЙ — Проектування та монтаж систем пожежної безпеки"
+  description="Комплексні інженерні рішення для захисту вашого бізнесу з офіційною ліцензією ДСНС. Проектування, монтаж, технічне обслуговування систем пожежної безпеки."
+  lang="uk"
+>
+  <Header lang="uk" />
+  <main>
+    <Hero lang="uk" />
+    <Solutions lang="uk" />
+    <About lang="uk" />
+    <ContactForm client:visible lang="uk" whatsappNumber="380XXXXXXXXX" />
+  </main>
+  <Footer lang="uk" />
+</BaseLayout>

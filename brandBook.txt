@@ -1,0 +1,53 @@
+Fonts:
+Roboto font family. It has five variations: Thin, Light, Regular, Medium, and Black. Use different font variations to build a hierarchy within text and help distinguish the primary and secondary messages. Do not use any additional fonts.
+
+
+CreationContent:
+Hierarchy and three levers of influence
+Manage the viewer’s attention. Adhere to a simple rule: the most contrasting element on an image is the first to draw attention. Use size, brightness, and thickness to control the contrast.
+1. Size
+The larger the element, the faster it catches attention.
+size
+2. Brightness
+The more the element contrasts the background, the more noticeable it is.
+brightness
+brightness
+3. Thickness
+The bolder the font, the greater its visual weight.
+thickness
+Message components
+Use the levers to arrange components and deliver a message effectively in a single image.
+❖ Key visual
+Key visual conveys the gist of the promotional message and stirs emotions. Key visual showcases the special properties of the product or tells its story. Our target audience loves beautiful gadgets, and a single image of an Ajax device may at times be sufficient to generate interest.
+Allocate about 40% of the layout to the visual.
+key-visual
+❖ Value
+Value or the offer, e.g., “Get a free device”, is of the highest priority within the hierarchy, so use the size, brightness, and thickness to underscore it.
+value
+❖ Co-branding
+Next, let the viewer know where the offer comes from. Add a co-branded logo and make it slightly smaller than the value.
+co-branding
+❖ Call to action
+At this stage, the viewer may be ready to take the offer. Let them know how to do it with a call-to-action component, e.g., a button or phone number. The call to action should be big, but it shouldn’t outweigh the value.
+call-to-action
+❖ Reason to believe
+This is where we demonstrate our value or explain what our offer is about. For example, if the value is, “Get a free device”, reason to believe would the details of the promotion.
+reason-to-believe
+❖ Other components
+The viewer may want to learn more about the company or product before taking the offer. Any additional component, e.g., a website, would take the sixth position in the hierarchy. Decrease its size and brightness, but use the maximum thickness to improve readability. And the visual is ready to be used.
+other-components
+Let it breathe
+Do not try to fill up all the free space. Instead, add extra spacing between the logical blocks to facilitate reading.
+Layouts may consist of one or multiple zones arranged either horizontally or vertically. The zones may be symmetrical or asymmetrical. The number of zones is flexible.
+layout
+Do not use diagonal zoning.
+layout-do-not-use
+Zones should not be left empty.
+layout-do-not-use
+Zoning can be done with either a solid white or black lining or without lining.
+zoning
+Hierarchy and three levers of influence
+Manage the viewer’s attention. Adhere to a simple rule: the most contrasting element on an image is the first to draw attention. Use size, brightness, and thickness to control the contrast.
+
+
+Colors:

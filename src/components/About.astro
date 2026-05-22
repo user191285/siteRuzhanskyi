@@ -1,0 +1,147 @@
+---
+export interface Props {
+  lang?: 'uk' | 'en';
+}
+
+const { lang = 'uk' } = Astro.props;
+
+const content = {
+  uk: {
+    heading: 'Про компанію ФОП РУЖАНСЬКИЙ',
+    manifest: "Ми не просто виконавці — ми особисто відповідаємо за кожен об'єкт. Кожен проект підписаний іменем та репутацією інженера, який його розробив. Ця персональна відповідальність — основа нашого підходу до пожежної безпеки.",
+    advantages: [
+      {
+        label: '01',
+        title: 'Особиста інженерна відповідальність',
+        description: "Кожен проект підписується та реалізується особисто — без залучення неконтрольованих субпідрядників.",
+      },
+      {
+        label: '02',
+        title: 'Швидкість проектування',
+        description: "Первинне технічне рішення та кошторис — протягом 24 годин після огляду об'єкту.",
+      },
+      {
+        label: '03',
+        title: 'Відповідність нормам ДСНС та ДСУ',
+        description: 'Всі роботи виконуються в межах чинного законодавства з офіційною ліцензією ДСНС України.',
+      },
+    ],
+  },
+  en: {
+    heading: 'About ФОП РУЖАНСЬКИЙ',
+    manifest: "We are not just contractors — we are personally responsible for every facility. Each project is signed by the name and reputation of the engineer who designed it. This personal accountability is the foundation of our approach to fire safety.",
+    advantages: [
+      {
+        label: '01',
+        title: 'Personal Engineering Responsibility',
+        description: 'Every project is personally signed and implemented — no uncontrolled subcontracting.',
+      },
+      {
+        label: '02',
+        title: 'Fast Design Turnaround',
+        description: 'Initial technical solution and cost estimate delivered within 24 hours after site inspection.',
+      },
+      {
+        label: '03',
+        title: 'SSNS & DSU Compliance',
+        description: 'All work is performed within the current legislation with an official SSNS Ukraine license.',
+      },
+    ],
+  },
+}[lang];
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-heading">{content.heading}</h2>
+    <p class="manifest">{content.manifest}</p>
+    <div class="advantages-grid">
+      {content.advantages.map((item) => (
+        <div class="advantage-block">
+          <span class="advantage-label">{item.label}</span>
+          <h3 class="advantage-title">{item.title}</h3>
+          <p class="advantage-description">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--color-bg);
+    padding: 80px 0;
+  }
+
+  .section-heading {
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .manifest {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    max-width: 720px;
+    margin-bottom: 60px;
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .advantage-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .advantage-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-muted-label);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .advantage-title {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+
+  .advantage-description {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 768px) {
+    .advantages-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .section-heading {
+      font-size: 24px;
+    }
+    .manifest {
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+  }
+</style>

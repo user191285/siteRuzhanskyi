@@ -1,0 +1,293 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import PageHero from '../../components/PageHero.astro';
+import Footer from '../../components/Footer.astro';
+
+type Solution = {
+  metaTitle: string;
+  h1: string;
+  subtitle: string;
+  intro: string;
+  includedTitle: string;
+  included: string[];
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const solutions: Record<string, Solution> = {
+    design: {
+      metaTitle: 'Проектування систем пожежної безпеки — ФОП РУЖАНСЬКИЙ',
+      h1: 'Проектування систем пожежної безпеки',
+      subtitle: 'Розробляємо повний комплект проектної документації для систем пожежного захисту відповідно до вимог ДСНС, ДБН та НПАОП.',
+      intro: "Від первинного обстеження об'єкту до погодження проекту з наглядовими органами — беремо на себе всі технічні та документальні питання. Кожен проект підписується особисто та відповідає чинним нормам і стандартам.",
+      includedTitle: 'Що включає послуга',
+      included: [
+        "Обстеження об'єкту та аналіз ризиків пожежної небезпеки",
+        'Розробка технічних умов та завдання на проектування',
+        'Проектування систем пожежної сигналізації (ПС)',
+        'Проектування систем автоматичного пожежогасіння (АПГ)',
+        'Проектування систем димовидалення та підпору повітря',
+        'Розробка кошторисної документації',
+        'Погодження проекту з органами ДСНС',
+        'Авторський нагляд під час монтажних робіт',
+      ],
+    },
+    installation: {
+      metaTitle: 'Монтаж систем пожежної безпеки — ФОП РУЖАНСЬКИЙ',
+      h1: 'Монтаж та інжиніринг систем пожежного захисту',
+      subtitle: "Виконуємо повний цикл монтажних та пусконалагоджувальних робіт на об'єктах будь-якої складності та категорії.",
+      intro: "Від складських приміщень до великих торгово-розважальних центрів та готелів — маємо досвід роботи з об'єктами будь-якого призначення. Монтаж виконується власними сертифікованими фахівцями без залучення некваліфікованих субпідрядників.",
+      includedTitle: 'Що включає послуга',
+      included: [
+        'Монтаж систем пожежної сигналізації (адресних та порогових)',
+        'Монтаж систем автоматичного водяного пожежогасіння (спринклерних та дренчерних)',
+        'Монтаж систем газового та порошкового пожежогасіння',
+        'Монтаж систем димовидалення та підпору повітря',
+        'Монтаж систем оповіщення та управління евакуацією (СОУЕ)',
+        'Пусконалагоджувальні та програмні роботи',
+        'Здача системи наглядовим органам та отримання необхідних документів',
+        'Навчання відповідальних осіб',
+      ],
+    },
+    maintenance: {
+      metaTitle: 'Технічне обслуговування систем пожежної безпеки — ФОП РУЖАНСЬКИЙ',
+      h1: 'Технічне обслуговування систем пожежної безпеки',
+      subtitle: 'Забезпечуємо постійну технічну справність встановлених систем пожежного захисту за єдиним договором обслуговування.',
+      intro: "Справна система пожежної безпеки — це не лише вимога законодавства, а й реальний захист людей і майна. Ми забезпечуємо регулярне обслуговування з веденням документації, необхідної для перевірок ДСНС.",
+      includedTitle: 'Що включає послуга',
+      included: [
+        'Щоквартальне планове технічне обслуговування',
+        'Перевірка та тестування всіх датчиків і компонентів',
+        'Заміна зношених або пошкоджених елементів',
+        'Ведення журналу технічного обслуговування',
+        'Позапланові виїзди при несправностях та аварійних ситуаціях',
+        'Щорічне комплексне тестування всієї системи',
+        'Оформлення актів перевірки для контролюючих органів',
+      ],
+    },
+    'fire-protection': {
+      metaTitle: 'Вогнезахисна обробка конструкцій — ФОП РУЖАНСЬКИЙ',
+      h1: 'Вогнезахисна обробка конструкцій та матеріалів',
+      subtitle: 'Підвищуємо вогнестійкість несучих і огороджувальних конструкцій сертифікованими матеріалами з оформленням повного пакету документів.',
+      intro: "Використовуємо лише сертифіковані вогнезахисні матеріали з підтвердженими показниками вогнестійкості. За результатами робіт надаємо акти та протоколи для проходження перевірок ДСНС.",
+      includedTitle: 'Що включає послуга',
+      included: [
+        'Вогнезахисне оброблення металевих несучих конструкцій (фарбами, штукатуркою)',
+        "Просочення деревини та дерев'яних конструкцій вогнебіозахисними складами",
+        'Вогнезахист кабельних прокладень та інженерних комунікацій',
+        'Оформлення актів та протоколів вогнезахисної обробки',
+        'Перевірка залишкового стану покриттів (за договором обслуговування)',
+        'Повторна обробка за рекомендованим терміном',
+        'Відповідність матеріалів вимогам ДСНС та ДБН',
+      ],
+    },
+    ajax: {
+      metaTitle: 'Встановлення систем Ajax Systems — ФОП РУЖАНСЬКИЙ',
+      h1: 'Офіційне встановлення охоронно-пожежних систем Ajax',
+      subtitle: "Сертифікована інсталяція бездротових та гібридних систем Ajax Systems для об'єктів будь-якого типу та призначення.",
+      intro: "Ajax Systems — провідний виробник систем безпеки з бездротовими технологіями. Як сертифікований партнер бренду, виконуємо встановлення систем без штробіння стін, з мінімальним часом монтажу та повноцінним гарантійним обслуговуванням від виробника.",
+      includedTitle: 'Що включає послуга',
+      included: [
+        "Обстеження об'єкту та проектування системи Ajax під конкретні умови",
+        'Встановлення бездротових датчиків диму, тепла та чадного газу Ajax',
+        'Монтаж ручних пожежних оповіщувачів та сиренних сповіщувачів',
+        'Налаштування хабів та моніторингу в системі Ajax PRO Desktop',
+        'Інтеграція пожежного та охоронного контурів в єдину систему',
+        'Підключення до пультової охорони за бажанням клієнта',
+        'Налаштування push-сповіщень на смартфони відповідальних осіб',
+        'Гарантійне обслуговування від виробника Ajax Systems',
+        'Навчання персоналу роботі з додатком і системою',
+      ],
+    },
+  };
+
+  return Object.entries(solutions).map(([slug, s]) => ({
+    params: { slug },
+    props: { s },
+  }));
+};
+
+interface Props { s: Solution }
+const { s } = Astro.props;
+---
+
+<BaseLayout title={s.metaTitle} description={s.subtitle} lang="uk">
+  <Header lang="uk" />
+  <main>
+    <PageHero
+      title={s.h1}
+      subtitle={s.subtitle}
+      backLabel="Усі рішення"
+      backHref="/#solutions"
+    />
+
+    <section class="solution-content">
+      <div class="container">
+        <div class="content-grid">
+          <div class="main-col">
+            <p class="intro">{s.intro}</p>
+            {Astro.params.slug === 'ajax' && (
+              <div class="poster-wrap">
+                <img src="/images/ajax-poster.png" alt="Ajax Systems — ФОП РУЖАНСЬКИЙ" class="poster-img" loading="lazy" />
+              </div>
+            )}
+            <h2 class="included-heading">{s.includedTitle}</h2>
+            <ul class="included-list">
+              {s.included.map((item) => (
+                <li class="included-item">
+                  <span class="dash">—</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside class="side-col">
+            <div class="cta-card">
+              <p class="cta-card-text">Готові розпочати роботу над вашим об'єктом?</p>
+              <a href="/#contact" class="cta-btn">Надіслати запит</a>
+              <a href="https://wa.me/380XXXXXXXXX?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F%21%20%D0%9C%D0%B5%D0%BD%D0%B5%20%D1%86%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B6%D0%B5%D0%B6%D0%BD%D0%B8%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82." target="_blank" rel="noopener noreferrer" class="wa-btn">
+                Написати в WhatsApp
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang="uk" />
+</BaseLayout>
+
+<style>
+  .solution-content {
+    background-color: var(--color-surface);
+    padding: 72px 0 96px;
+  }
+
+  .poster-wrap {
+    margin-bottom: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--color-input);
+  }
+
+  .poster-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .intro {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  .included-heading {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+
+  .included-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .included-item {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-input);
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .included-item:last-child { border-bottom: none; }
+
+  .dash {
+    color: var(--color-accent);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .cta-card {
+    position: sticky;
+    top: 84px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-input);
+    border-radius: 2px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-card-text {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 20px;
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+    text-align: center;
+  }
+
+  .cta-btn:hover { background-color: var(--color-text-hover); }
+
+  .wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 20px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    text-align: center;
+  }
+
+  .wa-btn:hover { border-color: #25D366; color: #25D366; }
+
+  @media (max-width: 900px) {
+    .content-grid { grid-template-columns: 1fr; gap: 48px; }
+    .cta-card { position: static; }
+  }
+
+  @media (max-width: 480px) {
+    .solution-content { padding: 48px 0 64px; }
+    .intro { font-size: 15px; }
+  }
+</style>

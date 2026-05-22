@@ -1,0 +1,297 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    type: 'ТРЦ',
+    title: 'ТРК The Mall',
+    description: "Комплексна система пожежної сигналізації, автоматичного пожежогасіння та димовидалення. Площа об'єкту — 5 700 м².",
+    location: 'Вінниця',
+    area: '5 700 м²',
+    image: '/images/portfolio/the-mall.jpg',
+  },
+  {
+    type: 'Бізнес-центр',
+    title: "Прем'єр-Тауер",
+    description: 'Повний цикл проектування та монтажу систем пожежного захисту для висотного адміністративного комплексу. Площа — 44 000 м².',
+    location: 'Вінниця',
+    area: '44 000 м²',
+    image: '/images/portfolio/premier-tower.jpg',
+  },
+  {
+    type: 'Торговий центр',
+    title: 'АВРОРА',
+    description: "Повний комплекс інженерних рішень пожежної безпеки для великого торгового центру. Площа — 20 000 м².",
+    location: 'Вінниця',
+    area: '20 000 м²',
+    image: '/images/portfolio/aurora.jpg',
+  },
+  {
+    type: 'Навчальний заклад',
+    title: 'ЗЗСО №1 імені Т. Шевченка',
+    description: "Проектування та монтаж системи пожежної сигналізації та оповіщення для закладу загальної середньої освіти І–ІІІ ступенів.",
+    location: 'м. Ямпіль, Ямпільський р-н, Вінницька обл.',
+    image: '/images/portfolio/school-yampil.jpg',
+  },
+  {
+    type: 'Медичний заклад',
+    title: 'КП "Ямпільський РМЦПМСД"',
+    description: "Встановлення системи пожежного захисту для районного медичного центру первинної медико-санітарної допомоги. вул. Гоголя 16.",
+    location: 'с. Буша, Ямпільський р-н, Вінницька обл.',
+    image: '/images/portfolio/medical-busha.jpg',
+  },
+  {
+    type: 'Агрокомплекс',
+    title: 'Агрокомплекс ПП «Юхимівське»',
+    description: 'Монтаж протипожежних систем сигналізації та пожежогасіння для агровиробничого комплексу.',
+    location: 'с. Юхимівка, Шаргородський р-н, Вінницька обл.',
+    image: '/images/portfolio/agro-yukhymivka.jpg',
+  },
+  {
+    type: 'АЗК',
+    title: 'АЗК «Колос»',
+    description: "Повний комплекс систем пожежної безпеки для автозаправного комплексу. вул. Кармелюка 44б.",
+    location: 'с. Шендерівка, Чернівецький р-н, Вінницька обл.',
+    image: '/images/portfolio/azk-shenderivka.jpg',
+  },
+];
+---
+
+<BaseLayout
+  title="Реалізовані проекти — ФОП РУЖАНСЬКИЙ"
+  description="Реалізовані проекти пожежної безпеки ФОП РУЖАНСЬКИЙ: ТРЦ, бізнес-центри, навчальні та медичні заклади, агрокомплекси."
+  lang="uk"
+>
+  <Header lang="uk" />
+  <main>
+    <PageHero
+      title="Реалізовані проекти пожежної безпеки"
+      subtitle="Об'єкти різного призначення по Вінницькій та суміжних областях, де впроваджено комплексні системи пожежного захисту."
+      backLabel="Головна"
+      backHref="/"
+    />
+
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="portfolio-grid">
+          {projects.map((p) => (
+            <div class="card">
+              <div class="card-image">
+                {p.image
+                  ? <img src={p.image} alt={p.title} class="card-photo" loading="lazy" />
+                  : <span class="type-label">{p.type}</span>
+                }
+              </div>
+              <div class="card-body">
+                <span class="object-type">{p.type}</span>
+                <h2 class="card-title">{p.title}</h2>
+                <p class="card-desc">{p.description}</p>
+                <div class="card-footer">
+                  <span class="location">{p.location}</span>
+                  <div class="status">
+                    <span class="dot"></span>
+                    <span class="status-label">Захищено</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <p class="cta-text">Маєте об'єкт, що потребує пожежного захисту?</p>
+        <a href="/#contact" class="cta-btn">Обговорити проект</a>
+      </div>
+    </section>
+  </main>
+  <Footer lang="uk" />
+</BaseLayout>
+
+<style>
+  .portfolio-section {
+    background-color: var(--color-surface);
+    padding: 72px 0 80px;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .card {
+    border: 1px solid var(--color-input);
+    background-color: var(--color-surface);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: box-shadow 0.25s;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-image {
+    background-color: var(--color-input);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-photo {
+    transform: scale(1.03);
+  }
+
+  .type-label {
+    font-weight: 300;
+    font-size: 10px;
+    color: var(--color-muted-label);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .object-type {
+    font-weight: 300;
+    font-size: 10px;
+    color: var(--color-muted-label);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-input);
+    margin-top: 4px;
+  }
+
+  .location {
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--color-muted-label);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--color-success);
+    display: block;
+  }
+
+  .status-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-success);
+    white-space: nowrap;
+  }
+
+  /* ── CTA band ── */
+  .cta-band {
+    background-color: var(--color-bg);
+    padding: 56px 0;
+    border-top: 1px solid var(--color-input);
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .cta-text {
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+  }
+
+  .cta-btn:hover {
+    background-color: var(--color-text-hover);
+  }
+
+  @media (max-width: 1024px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cta-text {
+      font-size: 18px;
+    }
+  }
+</style>
