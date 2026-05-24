@@ -34,7 +34,7 @@ const t = {
   },
 };
 
-export default function ContactForm({ lang = 'uk', whatsappNumber = '380XXXXXXXXX' }: Props) {
+export default function ContactForm({ lang = 'uk', whatsappNumber = '380639936614' }: Props) {
   const c = t[lang] ?? t.uk;
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
